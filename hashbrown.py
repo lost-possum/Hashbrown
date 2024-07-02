@@ -1,6 +1,5 @@
 import hashlib
 import os
-import argparse
 
 def calculate_file_hash(file_path, algorithm):
     if not os.path.exists(file_path):
@@ -22,14 +21,35 @@ def calculate_file_hash(file_path, algorithm):
     except Exception as e:
         print(f"Error: An error occured while reading the file. {e}")
         return None
+    
+def main():
+    print("Welcome to Hashbrown v0.01")
+    print("This program will help you calculate the hash of a file using a variety of algorithms.")
+
+    file_path = input("Please enter the file path: ")
+
+    algorithms = [
+        'md4', 'md5', 'sha1', 'sha224', 'sha256', 'sha385', 'sha512', 'sha3_224', 'sha3_256', 'sha3_384', 'sha3_512', 'blake2b', 'blake2s', 'shake_256', 'ripemd160', 'whirlpool'
+    ]
+
+    print("\nSupported algorithms:")
+    for i, algo in enumerate(algorithms, 1):
+        print(f"{i}, {algo}")
+
+    try: 
+        choice = int(input("\nEnter the number of the desired algorithm:"))
+        if 1 <= choice <= len(algorithms):
+            algorithm = algorithms[choice - 1]
+        else:
+            print("Error: Invalid input. Please run the program again and enter a number.\n(INPUT OUTSIDE ACCEPTED RANGE)")
+            return
+    except ValueError:
+        print("Error: Invalid input. Plase run the program again and enter a number.\n(VALUE ERROR)")
+        return
+
+    hash_value = calculate_file_hash(file_path, algorithm)
+    if hash_value:
+        print(f"\nThe {algorithm} hash of the file is: {hash_value}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Calculate the hash of the file.")
-    parser.add_argument("file_path", help="The path to the file to hash.")
-    parser.add_argument("algorithm", help="The hash algorithm to use (e.g., 'md5', 'sha1', 'sha256', etc.).")
-
-    args = parser.parse_args()
-
-    hash_value = calculate_file_hash(args.file_path, args.algorithm)
-    if hash_value:
-        print(f"The {args.algorithm} hash of the file {args.file_path} is: {hash_value}")
+    main()
