@@ -24,6 +24,7 @@ def calculate_file_hash(file_path, algorithm):
     
 def main():
     print("Welcome to Hashbrown v0.01")
+    print("License - GNU GPL v3")
     print("This program will help you calculate the hash of a file using a variety of algorithms.")
 
     file_path = input("Please enter the file path: ")
