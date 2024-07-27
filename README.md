@@ -1,4 +1,4 @@
-# Hashbrown v0.01
+# Hashbrown v0.0.1
 
 ***
 
@@ -25,10 +25,11 @@ Currently, this program supports the following hash algorithms:
 
 ***
 
-I plan to add support for both symmetric and assymetric encryption, including:
+At some point, I plan to add support for both symmetric and assymetric encryption, including:
 
 * GPG keypairs
 * SSH keypairs
 * Veracrypt-compatible keyfiles
 * Wireguard keypairs
 
+However, I do not have a firm timeline in place, as I am currently focused on other projects. This is, in essence, my first Python mini-project,
